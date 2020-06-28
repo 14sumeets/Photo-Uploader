@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const localhostPort = 3000
 const ejs = require('ejs')
 const fs = require('fs')
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const templatePath = __dirname + '/index.ejs'
+const PORT = process.env.PORT || localhostPort
 
 app.use(express.static(__dirname + '/images'));
 app.use(fileUpload({
@@ -46,4 +47,4 @@ app.post('/clear', (req, res) => {
 	res.redirect('/');
 })
 
-app.listen(port, () => console.log(`Image upload viewer app listening at http://localhost:${port}`))
+app.listen(PORT, () => console.log('Image upload viewer app listening at http://localhost:${PORT}'))
