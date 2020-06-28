@@ -9,6 +9,7 @@ const templatePath = __dirname + '/index.ejs'
 const PORT = process.env.PORT || localhostPort
 
 app.use(express.static(__dirname + '/images'));
+app.use(express.static(__dirname + '/css'));
 app.use(fileUpload({
     createParentPath: true
 }));
