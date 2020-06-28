@@ -1,0 +1,22 @@
+<h1>Upload Image Here</h1>
+
+<div id="form">
+<form action="/" enctype="multipart/form-data" method="post">
+  <label for="file">Select a file:</label>
+  <input type="file" id="myfile" name="file"><br><br>
+  <input type="submit">
+</form>
+
+<form action="/clear" method="post">
+<input type="submit" value="Delete all">
+</div>
+
+<h1>Uploaded Images</h1>
+
+<div id="display-images">
+	<% for(var i=0; i < images.length; i++) { %>
+	    <div class="image-box"> <img src="<%= images[i].path %>"/> </div>
+	<% } %>
+	
+</div>
+	
