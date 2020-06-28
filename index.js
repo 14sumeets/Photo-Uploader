@@ -25,7 +25,9 @@ function getImages() {
 	var images = [];
 	fs.readdirSync(__dirname + '/images').forEach(function (file) {
 	    // Do whatever you want to do with the file
-		images.push({path: file})
+		if (file != '.gitignore') {
+			images.push({path: file})
+		}
 	});
 	console.log("images: " + images);
 	return images;
@@ -42,9 +44,11 @@ app.post('/', (req, res) => {
 app.post('/clear', (req, res) => {
 	fs.readdirSync(__dirname + '/images').forEach(function (file) {
 	        // Do whatever you want to do with the file
-		fs.unlinkSync('images/' + file);
+		if (file != '.gitignore') {
+			fs.unlinkSync('images/' + file);
+	    }
 	});
 	res.redirect('/');
 })
 
-app.listen(PORT, () => console.log('Image upload viewer app listening at http://localhost:${PORT}'))
+app.listen(PORT, () => console.log('Image upload viewer app listening at http://localhost:%s', PORT))
